@@ -15,6 +15,7 @@ const debug = require('debug')('usercontroller')
  * User controller
  */
 class UserController {
+
 	/**
 	 * Register (create) a new user
 	 *
@@ -28,12 +29,9 @@ class UserController {
 	 */
 	async create({ request }) {
 
-		debug(`'create' called`)
+		debug(`creating a new user`)
 
 		const { email, password } = request.post()
-
-		debug(`registering email: ${email}`)
-		debug(`password provided: ${password ? 'true' : 'false'}`)
 
 		const user = new User()
 
@@ -47,19 +45,19 @@ class UserController {
 
 	// @todo endpoint implementation.
 	async read({ request }) {
-		debug(`'read' called`)
+		// debug(`'read' called`)
 		throw new Error('endpoint not implemented')
 	}
 
 	// @todo endpoint implementation.
 	async update({ request }) {
-		debug(`'update' called`)
+		// debug(`'update' called`)
 		throw new Error('endpoint not implemented')
 	}
 
 	// @todo endpoint implementation.
 	async delete({ request }) {
-		debug(`'delete' called`)
+		// debug(`'delete' called`)
 		throw new Error('endpoint not implemented')
 	}
 }

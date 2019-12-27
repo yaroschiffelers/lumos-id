@@ -18,4 +18,6 @@ const Route = use('Route')
 
 Route.get('/', () => ({ body: 'Welcome to Lumos ID' }))
 
-Route.post('/register', 'UserController.create')
+Route
+	.post('/register', 'UserController.create')
+	.validator('User')
