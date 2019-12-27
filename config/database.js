@@ -1,9 +1,9 @@
 'use strict'
 
-/** @type {import('@adonisjs/framework/src/Env')} */
+/** @typedef {import('@adonisjs/framework/src/Env')} Env */
 const Env = use('Env')
 
-/** @type {import('@adonisjs/ignitor/src/Helpers')} */
+/** @typedef {import('@adonisjs/ignitor/src/Helpers')} Helpers */
 const Helpers = use('Helpers')
 
 module.exports = {

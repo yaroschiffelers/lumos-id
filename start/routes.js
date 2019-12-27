@@ -1,5 +1,8 @@
 'use strict'
 
+/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
+const Route = use('Route')
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -13,9 +16,6 @@
 |
 */
 
-/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+Route.get('/', () => ({ body: 'Welcome to Lumos ID' }))
 
-Route.get('/', () => {
-  return { body: 'Welcome to Lumos ID' }
-})
+Route.post('/register', 'UserController.create')

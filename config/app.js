@@ -1,6 +1,6 @@
 'use strict'
 
-/** @type {import('@adonisjs/framework/src/Env')} */
+/** @typedef {import('@adonisjs/framework/src/Env')} Env */
 const Env = use('Env')
 
 module.exports = {
@@ -201,7 +201,7 @@ module.exports = {
     */
     console: {
       driver: 'console',
-      name: 'adonis-app',
+      name: 'lumos-id',
       level: 'info'
     },
 
@@ -218,8 +218,8 @@ module.exports = {
     */
     file: {
       driver: 'file',
-      name: 'adonis-app',
-      filename: 'adonis.log',
+      name: 'lumos-id',
+      filename: 'lumos-id.log',
       level: 'info'
     }
   },
