@@ -11,10 +11,59 @@ const Logger = use('Logger')
 
 const debug = require('debug')('usercontroller')
 
+const createUser = async ({ email = '', password = null, firstName = '', middleName = '', lastName = '' } = {}) => {
+
+	// Create a new instance
+	const user = new User()
+
+	// Set the applicable fields
+	user.email = email
+	user.firstName = firstName
+	user.middleName = middleName
+	user.lastName = lastName
+
+	/**
+	 * Password get hashed by the models beforeCreate hook. So no need to do it here, otherwise we'll
+	 * be storing a hash of a hash.
+	 *
+	 * @see UserHook.hashPassword
+	 */
+	user.password = password
+
+	user.permissionLevel = 1
+
+	// return the instance
+	return user
+}
+
 /**
  * User controller
  */
 class UserController {
+
+	/**
+	 * Get the current users' information object
+	 *
+	 * @param request
+	 *
+	 * @returns {Promise<void>}
+	 */
+	async get({ request }) {
+
+		debug(`'get' called`)
+
+		const { email } = request.get()
+
+		try {
+			return await User
+				.query()
+				.where('email', email)
+				.first()
+
+		} catch (error) {
+			return error
+		}
+	}
 
 	/**
 	 * Register (create) a new user
@@ -29,14 +78,21 @@ class UserController {
 	 */
 	async create({ request }) {
 
-		debug(`creating a new user`)
+		debug('create called')
 
-		const { email, password } = request.post()
+		const body = request.post()
 
-		const user = new User()
+		// const user = new User()
+		// user.email = email
+		// user.password = await Hash.make(password)
+		// user.firstName = 1
+		// user.middleName = 1
+		// user.lastName = 1
+		// user.permissionLevel = 1
 
-		user.email = email
-		user.password = await Hash.make(password)
+		const user = await createUser({ ...body })
+
+		debug(user)
 
 		await user.save()
 
@@ -44,21 +100,70 @@ class UserController {
 	}
 
 	// @todo endpoint implementation.
-	async read({ request }) {
-		// debug(`'read' called`)
-		throw new Error('endpoint not implemented')
-	}
-
-	// @todo endpoint implementation.
 	async update({ request }) {
-		// debug(`'update' called`)
+
+		debug(`'update' called`)
 		throw new Error('endpoint not implemented')
 	}
 
-	// @todo endpoint implementation.
 	async delete({ request }) {
-		// debug(`'delete' called`)
-		throw new Error('endpoint not implemented')
+
+		const { email } = request.post()
+
+		try {
+			const user = await User
+				.query()
+				.where('email', email)
+				.first()
+
+			return user.delete()
+		} catch (error) {
+			throw new Error(error)
+		}
+	}
+
+	/**
+	 * Login a excising user
+	 *
+	 * @call POST
+	 *
+	 * @param request
+	 * @param auth
+	 * @param session
+	 *
+	 * @returns {Promise<*|Object>}
+	 */
+	async login({ request, auth }) {
+
+		debug(`'login' called`)
+
+		const { email, password } = request.post()
+		return await auth.attempt(email, password)
+		// try {
+		// 	return await auth.attempt(email, password)
+		// } catch (error) {
+		// 	return { error: 'Invalid Login Credentials' }
+		// }
+	}
+
+	/**
+	 * Logout a logged in user
+	 *
+	 * @param auth
+	 * @param session
+	 *
+	 * @returns {Promise<*|void>}
+	 */
+	async logout({ auth, session }) {
+
+		debug(`'logout' called`)
+
+		try {
+			return await auth.logout()
+		} catch (error) {
+			session.flash({ error: 'Invalid Login Credentials' })
+			return error
+		}
 	}
 }
 

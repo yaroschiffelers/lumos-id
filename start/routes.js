@@ -18,6 +18,41 @@ const Route = use('Route')
 
 Route.get('/', () => ({ body: 'Welcome to Lumos ID' }))
 
+/**
+ * Get a user
+ * @route user
+ */
 Route
-	.post('/register', 'UserController.create')
+	.get('/user', 'UserController.get')
+	.validator('User')
+
+/**
+ * Create a new user
+ * @route user
+ */
+Route
+	.post('/user', 'UserController.create')
+	// .validator('User')
+
+/**
+ * Update a user
+ * @route user
+ */
+Route
+	.put('/user', 'UserController.update')
+	.validator('User')
+
+/**
+ * Delete a user
+ * @route user
+ */
+Route
+	.post('/user/delete', 'UserController.delete')
+
+Route
+	.post('/auth', 'UserController.login')
+	// .validator('User')
+
+Route
+	.get('/auth', 'UserController.logout')
 	.validator('User')

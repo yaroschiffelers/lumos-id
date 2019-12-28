@@ -20,25 +20,34 @@ class User extends Model {
 	}
 
 	/**
+	 * The primary key for the model.
+	 *
+	 * @return {String} Mongodb ObjectId
+	 */
+	// static get primaryKey () {
+	// 	return '_id'
+	// }
+
+	/**
 	 * Aggregates and combinations of existing fields.
 	 *
 	 * @returns {[string]}
 	 */
 	static get computed() {
-		return [ 'fullname' ]
+		return [ 'fullName' ]
 	}
 
 	/**
-	 * Computed property: fullname
+	 * Computed property: fullName
 	 *
-	 * @param {string} firstname   - user.firstname
-	 * @param {string} middlename  - user.middlename
-	 * @param {string} lastname    - user.lastname
+	 * @param {string} firstName   - user.firstName
+	 * @param {string} middleName  - user.middleName
+	 * @param {string} lastName    - user.lastName
 	 *
-	 * @returns {string} - fullname
+	 * @returns {string} - fullName
 	 */
-	getFullname({ firstname, middlename, lastname }) {
-		return `${firstname} ${middlename ? middlename + '' : ''}${lastname}`
+	getFullName({ firstName, middleName, lastName }) {
+		return `${firstName}${middleName ? '' + middleName + '' : ''}${lastName}`
 	}
 
 	/**
