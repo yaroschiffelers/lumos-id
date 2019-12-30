@@ -1,5 +1,7 @@
 # Lumos ID 
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Lumos ID is the main authentication and user identity service used by all Lumos products.  
 
 ## Setup
