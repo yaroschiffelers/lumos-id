@@ -60,3 +60,11 @@ const User = use('App/Models/User')
 More info and sources:   
 - [https://blog.adonisjs.com/adonis-intellisence/](https://blog.adonisjs.com/adonis-intellisence/)
 - [https://github.com/tiansin/adonis-quick-start-typescript](https://github.com/tiansin/adonis-quick-start-typescript)
+
+## GraphQL
+
+### Resources 
+
+[Apollo GraphQL for Adonis Docs](https://www.apollographql.com/docs/apollo-server/v1/servers/adonis/)
+[Adonis GraphQL Docs](https://github.com/RomainLanz/adonis-graphql)
+
