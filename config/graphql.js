@@ -34,7 +34,7 @@ module.exports = {
 	| The path to the folder where your GraphQL Schema's reside.
 	|
 	*/
-	schema: join(__dirname, '..app/Schema'),
+	schema: join(__dirname, '../app/Schema'),
 
 	/*
 	|--------------------------------------------------------------------------

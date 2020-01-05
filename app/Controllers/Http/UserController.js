@@ -21,6 +21,7 @@ const createUser = async ({ email = '', password = null, firstName = '', middleN
 	user.firstName = firstName
 	user.middleName = middleName
 	user.lastName = lastName
+	user.permissionLevel = 1
 
 	/**
 	 * Password get hashed by the models beforeCreate hook. So no need to do it here, otherwise we'll
@@ -30,9 +31,7 @@ const createUser = async ({ email = '', password = null, firstName = '', middleN
 	 */
 	user.password = password
 
-	user.permissionLevel = 1
-
-	// return the instance
+	// return the new instance
 	return user
 }
 
