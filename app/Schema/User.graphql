@@ -1,11 +1,29 @@
+type User {
+#	querying mongodb _id's (@type ObjectId) result in an error.
+#	@see https://github.com/apollographql/apollo-server/issues/1633
+#	@see https://github.com/apollographql/apollo-server/issues/1649#issuecomment-420840287
+#	_id: String
+	email: String!
+	firstName: String
+	middleName: String
+	lastName: String
+	fullName: String
+	permissionLevel: Int
+}
+
+input UserInput {
+	email: String
+	firstName: String
+	middleName: String
+	lastName: String
+	permissionLevel: Int
+}
+
 type Query {
-  #
+	user(email: String!): User
 }
 
 type Mutation {
-  #
-}
-
-type User {
-  #
+	createUser(input: UserInput!): User!
+	updateUser(_id: ID!, input: UserInput): User!
 }

@@ -3,6 +3,9 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+/** @type {typeof import('adonis-graphql/src/Server')} */
+const GraphQLServer = use('GraphQLServer')
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -18,41 +21,47 @@ const Route = use('Route')
 
 Route.get('/', () => ({ body: 'Welcome to Lumos ID' }))
 
+Route.post('/', (context) => {
+	return GraphQLServer.handle(context)
+})
+
+Route.get('/graphiql', (context) => {
+	return GraphQLServer.handleUI(context)
+})
+
 /**
  * Get a user
  * @route user
  */
-Route
-	.get('/user', 'UserController.get')
-	.validator('User')
+// Route
+// 	.get('/user', 'UserController.get')
+// 	.validator('User')
 
 /**
  * Create a new user
  * @route user
  */
-Route
-	.post('/user', 'UserController.create')
+// Route
+// 	.post('/user', 'UserController.create')
 	// .validator('User')
 
 /**
  * Update a user
  * @route user
  */
-Route
-	.put('/user', 'UserController.update')
-	.validator('User')
+// Route
+// 	.put('/user', 'UserController.update')
+// 	.validator('User')
 
 /**
  * Delete a user
  * @route user
  */
-Route
-	.post('/user/delete', 'UserController.delete')
-
-Route
-	.post('/auth', 'UserController.login')
+// Route.post('/user/delete', 'UserController.delete')
+// Route.post('/auth', 'UserController.login')
 	// .validator('User')
 
-Route
-	.get('/auth', 'UserController.logout')
-	.validator('User')
+// Route
+// 	.get('/auth', 'UserController.logout')
+// 	.validator('User')
+//

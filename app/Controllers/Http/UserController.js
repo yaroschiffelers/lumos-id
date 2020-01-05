@@ -7,7 +7,7 @@ const Hash = use('Hash')
 const User = use('App/Models/User')
 
 /** @type {typeof import('@adonisjs/framework/src/Logger')} */
-const Logger = use('Logger')
+// const Logger = use('Logger')
 
 const debug = require('debug')('usercontroller')
 
