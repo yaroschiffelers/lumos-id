@@ -34,12 +34,7 @@ Add the ```/types``` directory as Javascript library to your project.
 ### Commons 
 
 ```javascript
-/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-/** @type {typeof import('app/Models/User')} */
-
 /** @typedef {typeof import('@adonisjs/lucid/src/Lucid/Model')} Model */
-const User = use('App/Models/User')
-
 /** @typedef {import('@adonisjs/auth/src/Schemes/Session')} AuthSession */
 /** @typedef {import('@adonisjs/framework/src/Env')} Env */
 /** @typedef {import('@adonisjs/lucid/src/Factory')} Factory */
@@ -55,6 +50,7 @@ const User = use('App/Models/User')
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+/** @type {typeof import('app/Models/User')} */
 ```
 
 More info and sources:   
@@ -65,6 +61,5 @@ More info and sources:
 
 ### Resources 
 
-[Apollo GraphQL for Adonis Docs](https://www.apollographql.com/docs/apollo-server/v1/servers/adonis/)
-[Adonis GraphQL Docs](https://github.com/RomainLanz/adonis-graphql)
-
+- [Apollo GraphQL for Adonis Docs](https://www.apollographql.com/docs/apollo-server/v1/servers/adonis/)
+- [Adonis GraphQL Docs](https://github.com/RomainLanz/adonis-graphql)
