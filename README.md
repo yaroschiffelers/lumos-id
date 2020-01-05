@@ -23,7 +23,10 @@ Run the following command to start the HTTP Server:
 
 ```shell script
 adonis serve --dev
-```
+
+# with hot-reloading of .graphql files  
+yarn serve 
+``` 
 
 ## Types Definitions 
 
