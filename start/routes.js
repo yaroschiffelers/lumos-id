@@ -19,15 +19,11 @@ const GraphQLServer = use('GraphQLServer')
 |
 */
 
-Route.get('/', () => ({ body: 'Welcome to Lumos ID' }))
 
-Route.post('/', (context) => {
-	return GraphQLServer.handle(context)
-})
+Route.post('/', context => GraphQLServer.handle(context))
+// .validator('User')
 
-Route.get('/graphiql', (context) => {
-	return GraphQLServer.handleUI(context)
-})
+Route.get('/graphiql', context => GraphQLServer.handleUI(context))
 
 /**
  * Get a user
