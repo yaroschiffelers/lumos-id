@@ -40,14 +40,13 @@ class User extends Model {
 	/**
 	 * Computed property: fullName
 	 *
-	 * @param {string} firstName   - user.firstName
-	 * @param {string} middleName  - user.middleName
-	 * @param {string} lastName    - user.lastName
+	 * @param {Object} name - user.name
 	 *
 	 * @returns {string} - fullName
 	 */
-	getFullName({ firstName, middleName, lastName }) {
-		return `${firstName}${middleName ? '' + middleName + '' : ''}${lastName}`
+	getFullName({ name }) {
+		const { first, middle, last } = name
+		return `${first}${middle ? '' + middle + '' : ''}${last}`
 	}
 
 	/**
@@ -64,6 +63,5 @@ class User extends Model {
 		return this.hasMany('App/Models/Token', _, _)
 	}
 }
-
 
 module.exports = User
