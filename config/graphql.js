@@ -1,5 +1,8 @@
 'use strict'
 
+/** @typedef {import('@adonisjs/framework/src/Env')} Env */
+const Env = use('Env')
+
 const { join } = require('path')
 
 module.exports = {
@@ -10,20 +13,20 @@ module.exports = {
 		| Debug
 		|--------------------------------------------------------------------------
 		|
-		| --
+		| Enables logging of GraphQL server internals.
 		|
 		*/
-		debug: false,
+		debug: Env.get('DEBUG', false),
 
 		/*
 		|--------------------------------------------------------------------------
 		| endpointURL
 		|--------------------------------------------------------------------------
 		|
-		| --
+		| Your GraphQL endpoint URL, against which all requests are made.
 		|
 		*/
-		endpointURL: '/',
+		endpointURL: '/'
 	},
 
 	/*
