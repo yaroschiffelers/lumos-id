@@ -7,33 +7,10 @@ const Hash = use('Hash')
 const User = use('App/Models/User')
 
 /** @type {typeof import('@adonisjs/framework/src/Logger')} */
-// const Logger = use('Logger')
+	// const Logger = use('Logger')
 
 const debug = require('debug')('usercontroller')
-
-const createUser = async ({ email = '', password = null, firstName = '', middleName = '', lastName = '' } = {}) => {
-
-	// Create a new instance
-	const user = new User()
-
-	// Set the applicable fields
-	user.email = email
-	user.firstName = firstName
-	user.middleName = middleName
-	user.lastName = lastName
-	user.permissionLevel = 1
-
-	/**
-	 * Password get hashed by the models beforeCreate hook. So no need to do it here, otherwise we'll
-	 * be storing a hash of a hash.
-	 *
-	 * @see UserHook.hashPassword
-	 */
-	user.password = password
-
-	// return the new instance
-	return user
-}
+const { createUser } = require('../../Models/User')
 
 /**
  * User controller
@@ -48,8 +25,6 @@ class UserController {
 	 * @returns {Promise<void>}
 	 */
 	async get({ request }) {
-
-		debug(`'get' called`)
 
 		const { email } = request.get()
 
@@ -77,21 +52,9 @@ class UserController {
 	 */
 	async create({ request }) {
 
-		debug('create called')
-
 		const body = request.post()
 
-		// const user = new User()
-		// user.email = email
-		// user.password = await Hash.make(password)
-		// user.firstName = 1
-		// user.middleName = 1
-		// user.lastName = 1
-		// user.permissionLevel = 1
-
 		const user = await createUser({ ...body })
-
-		debug(user)
 
 		await user.save()
 
@@ -99,8 +62,7 @@ class UserController {
 	}
 
 	// @todo endpoint implementation.
-	async update({ request }) {
-
+	async update() {
 		debug(`'update' called`)
 		throw new Error('endpoint not implemented')
 	}
