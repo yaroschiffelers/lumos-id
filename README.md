@@ -66,3 +66,4 @@ More info and sources:
 
 - [Apollo GraphQL for Adonis Docs](https://www.apollographql.com/docs/apollo-server/v1/servers/adonis/)
 - [Adonis GraphQL Docs](https://github.com/RomainLanz/adonis-graphql)
+- [User Database Model](https://www.donedone.com/building-the-optimal-user-database-model-for-your-application/)
