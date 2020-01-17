@@ -1,0 +1,58 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+	query: Query
+	mutation: Mutation
+}
+
+type Mutation {
+	createUser(input: CreateUserInput!): User!
+	updateUser(_id: ID!, input: UpdateUserInput): User!
+}
+
+type PersonName {
+	first: String
+	initials: String
+	last: String
+	middle: String
+}
+
+type ProfileImage {
+	srcLarge: String
+	srcMedium: String
+	srcSmall: String
+	srcThumb: String
+	srcXLarge: String
+}
+
+type Query {
+	user(email: String!): User
+}
+
+type User {
+	"""
+	Querying mongodb _id's (@type ObjectId) result in an error.
+	@see https://github.com/apollographql/apollo-server/issues/1633
+	@see https://github.com/apollographql/apollo-server/issues/1649#issuecomment-420840287
+	_id: String
+	"""
+	email: String!
+	fullName: String
+	name: PersonName
+	permissionLevel: Int
+	profileImage: ProfileImage
+}
+
+input CreateUserInput {
+	email: String!
+	password: String!
+}
+
+input UpdateUserInput {
+	email: String
+	firstName: String
+	lastName: String
+	middleName: String
+	permissionLevel: Int
+	profileImage: String
+}
