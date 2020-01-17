@@ -1,22 +1,30 @@
+# import PersonName from "./PersonName.graphql"
+# import ProfileImage from "./ProfileImage.graphql"
+
 type User {
-#	querying mongodb _id's (@type ObjectId) result in an error.
-#	@see https://github.com/apollographql/apollo-server/issues/1633
-#	@see https://github.com/apollographql/apollo-server/issues/1649#issuecomment-420840287
-#	_id: String
+	# Querying mongodb _id's (@type ObjectId) result in an error.
+	# @see https://github.com/apollographql/apollo-server/issues/1633
+	# @see https://github.com/apollographql/apollo-server/issues/1649#issuecomment-420840287
+	# _id: String
 	email: String!
-	firstName: String
-	middleName: String
-	lastName: String
+	name: PersonName
 	fullName: String
 	permissionLevel: Int
+	profileImage: ProfileImage
 }
 
-input UserInput {
+input CreateUserInput {
+	password: String!
+	email: String!
+}
+
+input UpdateUserInput {
 	email: String
 	firstName: String
 	middleName: String
 	lastName: String
 	permissionLevel: Int
+	profileImage: String
 }
 
 type Query {
@@ -24,6 +32,6 @@ type Query {
 }
 
 type Mutation {
-	createUser(input: UserInput!): User!
-	updateUser(_id: ID!, input: UserInput): User!
+	createUser(input: CreateUserInput!): User!
+	updateUser(_id: ID!, input: UpdateUserInput): User!
 }

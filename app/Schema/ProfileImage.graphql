@@ -1,0 +1,7 @@
+type ProfileImage {
+	srcThumb: String
+	srcSmall: String
+	srcMedium: String
+	srcLarge: String
+	srcXLarge: String
+}
