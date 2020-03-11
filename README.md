@@ -28,7 +28,7 @@ adonis serve --dev
 yarn serve 
 ``` 
 
-## Types Definitions 
+## Type Definitions 
 
 Add the ```/types``` directory as Javascript library to your project. 
 
